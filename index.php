@@ -10,21 +10,25 @@
 </head>
 <body>
 
-    <h1>My bookmarklets</h1>
+    <div id="page">
+        <h1>My bookmarklets</h1>
 
-    <ul>
-        <?php
-        foreach (new DirectoryIterator(__DIR__ . '/js') as $fileInfo) {
-            if ($fileInfo->isFile() && substr($fileInfo->getFilename(), -7) === '.min.js') {
-                $minified = file_get_contents($fileInfo->getPathname());
-                $url = 'javascript:' . rawurlencode($minified);
-                $name = $fileInfo->getFilename();
+        <ul class="bookmarklets">
+            <?php
+            foreach (new DirectoryIterator(__DIR__ . '/js') as $fileInfo) {
+                if ($fileInfo->isFile() && substr($fileInfo->getFilename(), -7) === '.min.js') {
+                    $minified = file_get_contents($fileInfo->getPathname());
+                    $url = 'javascript:' . rawurlencode($minified);
+                    $filenameBase = substr($fileInfo->getFilename(), 0, -7);
+                    $name = htmlentities($filenameBase);
+                    $title = htmlentities(str_replace('-', ' ', $filenameBase));
 
-                echo "<li><a href=\"$url\">$name</a></li>\n";
+                    echo "<li><a href=\"$url\" title=\"$title\" class=\"bookmarklet\">$name</a></li>\n";
+                }
             }
-        }
-        ?>
-    </ul>
+            ?>
+        </ul>
+    </div>
 
 </body>
 </html>
