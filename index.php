@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
 
-    <title>My bookmarklets</title>
-    <meta name="description" content="A collection of my bookmarklets">
+    <title>Bookmarkletsgo</title>
+    <meta name="description" content="A collection of bookmarklets">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div id="page">
-        <h1>My bookmarklets</h1>
+        <h1>Bookmarkletsgo!</h1>
 
         <ul class="bookmarklets">
             <?php
