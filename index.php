@@ -20,7 +20,7 @@
                 $url = 'javascript:' . rawurlencode($minified);
                 $name = $fileInfo->getFilename();
 
-                echo "<li><a href=\"$url\">$name</a></li>";
+                echo "<li><a href=\"$url\">$name</a></li>\n";
             }
         }
         ?>
