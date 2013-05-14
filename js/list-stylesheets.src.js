@@ -29,7 +29,10 @@
         $('body').append(logDiv);
 
         // List the stylesheets.
-        var theList = $('<ul>');
+        var theList = $('<ul>').css({
+            'list-style': 'disc',
+            'padding-left': '2em'
+        });
         for (var s = 0; s < stylesheetCount; s++) {
             var stylesheet = document.styleSheets[s];
             if (stylesheet.href) {
