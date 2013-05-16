@@ -36,7 +36,9 @@ h1 {
 	padding: 1ex;
 }
 
-
+ul.bookmarklets {
+	margin: 1em 0;
+}
 
 a.bookmarklet {
 	display: inline-block;

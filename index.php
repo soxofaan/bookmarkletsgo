@@ -13,6 +13,7 @@
     <div id="page">
         <h1>Bookmarkletsgo!</h1>
 
+        <p>Drag these to your bookmarks:</p>
         <ul class="bookmarklets">
 
             <?php
@@ -21,11 +22,12 @@
                 if ($fileInfo->isFile() && substr($fileInfo->getFilename(), -7) === '.min.js') {
                     $minified = file_get_contents($fileInfo->getPathname());
                     $url = 'javascript:' . rawurlencode($minified);
+                    $urlSize = strlen($url);
                     $filenameBase = substr($fileInfo->getFilename(), 0, -7);
                     $name = htmlentities($filenameBase);
                     $title = htmlentities(str_replace('-', ' ', $filenameBase));
 
-                    echo "<li><a href=\"$url\" title=\"$title\" class=\"bookmarklet\">$name</a></li>\n";
+                    echo "<li><a href=\"$url\" title=\"$title\" class=\"bookmarklet\">$name ($urlSize bytes)</a></li>\n";
                 }
             }
             ?>
