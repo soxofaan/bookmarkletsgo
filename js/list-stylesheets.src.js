@@ -14,7 +14,7 @@
         var stylesheetCount = document.styleSheets.length;
 
         // Start with reporting the number of stylesheets.
-        var logDiv =  $('<div>').css({
+        var logDiv =  $('<div></div>').css({
             position: 'absolute',
             top: '1em',
             left: '1em',
@@ -25,21 +25,21 @@
             'font-size': '10pt'
         });
 
-        logDiv.append($('<div>').text('Found ' + stylesheetCount + (stylesheetCount == 1 ? ' stylesheet' : ' stylesheets')));
+        logDiv.append($('<div></div>').text('Found ' + stylesheetCount + (stylesheetCount == 1 ? ' stylesheet' : ' stylesheets')));
         $('body').append(logDiv);
 
         // List the stylesheets.
-        var theList = $('<ul>').css({
+        var theList = $('<ul></ul>').css({
             'list-style': 'disc',
             'padding-left': '2em'
         });
         for (var s = 0; s < stylesheetCount; s++) {
             var stylesheet = document.styleSheets[s];
             if (stylesheet.href) {
-                theList.append($('<li>').append($('<a>').attr('href', stylesheet.href).text(stylesheet.href)));
+                theList.append($('<li></li>').append($('<a></a>').attr('href', stylesheet.href).text(stylesheet.href)));
             }
             else {
-                theList.append($('<li>').text('Internal stylesheet with ' + stylesheet.cssRules.length + ' rules'));
+                theList.append($('<li></li>').text('Internal stylesheet with ' + stylesheet.cssRules.length + ' rules'));
             }
         }
         logDiv.append(theList);
