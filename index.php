@@ -14,7 +14,9 @@
         <h1>Bookmarkletsgo!</h1>
 
         <ul class="bookmarklets">
+
             <?php
+            echo "\n";
             foreach (new DirectoryIterator(__DIR__ . '/js') as $fileInfo) {
                 if ($fileInfo->isFile() && substr($fileInfo->getFilename(), -7) === '.min.js') {
                     $minified = file_get_contents($fileInfo->getPathname());
@@ -27,6 +29,7 @@
                 }
             }
             ?>
+
         </ul>
     </div>
 
