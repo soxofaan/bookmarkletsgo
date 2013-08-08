@@ -7,7 +7,11 @@
         alert('Only works when jQuery is availbale');
         return;
     }
-    // TODO: check for jQuery version
+    var version = jQuery.fn.jquery.split('.');
+    if (!(version[0] >= 1 && version[1] >= 8))
+    {
+        alert('jQuery version is too low: ' + jQuery.fn.jquery + ' < 1.8.0 (expected)');
+    }
 
 
     /**
