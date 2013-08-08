@@ -17,7 +17,7 @@ ol, ul {
 
 body {
 	line-height: 1;
-	font-family: monospace;
+	font-family: "source-code-pro", Consolas, monospace;
 	color: #555;
 	font-size: 11pt;
 }
@@ -36,11 +36,11 @@ h1 {
 	padding: 1ex;
 }
 
-ul.bookmarklets {
+#bookmarklets {
 	margin: 1em 0;
 }
 
-a.bookmarklet {
+#bookmarklets a.bookmarklet {
 	display: inline-block;
 	padding: 1ex;
 	margin: 0 1ex 1ex 0;
@@ -49,3 +49,16 @@ a.bookmarklet {
 	border: 1px solid #bbb;
 	background-color: #f0f0f0;
 }
+
+#bookmarklets .sources {
+	font-size: 75%;
+	opacity: 0;
+	transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+}
+
+#bookmarklets li:hover .sources {
+	opacity: 1;
+}
+
+

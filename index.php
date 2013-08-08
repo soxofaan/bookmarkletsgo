@@ -14,20 +14,27 @@
         <h1>Bookmarkletsgo!</h1>
 
         <p>Drag these to your bookmarks:</p>
-        <ul class="bookmarklets">
+        <ul id="bookmarklets">
 
             <?php
             echo "\n";
             foreach (new DirectoryIterator(__DIR__ . '/js') as $fileInfo) {
                 if ($fileInfo->isFile() && substr($fileInfo->getFilename(), -7) === '.min.js') {
-                    $minified = file_get_contents($fileInfo->getPathname());
+                    $path = $fileInfo->getPathname();
+                    $minified = file_get_contents($path);
                     $url = 'javascript:' . rawurlencode($minified);
                     $urlSize = strlen($url);
                     $filenameBase = substr($fileInfo->getFilename(), 0, -7);
                     $name = htmlentities($filenameBase);
                     $title = htmlentities(str_replace('-', ' ', $filenameBase));
 
-                    echo "<li><a href=\"$url\" title=\"$title\" class=\"bookmarklet\">$name ($urlSize bytes)</a></li>\n";
+                    echo "<li>\n";
+                    echo "<a href=\"$url\" title=\"$title\" class=\"bookmarklet\">$name ($urlSize bytes)</a>\n";
+                    echo "<span class=\"sources\">";
+                    echo " <a href=\"$path\">min</a>";
+                    echo " <a href=\"" . str_replace('.min.js', '.src.js', $path) . "\">src</a>";
+                    echo "</span>\n";
+                    echo "</li>\n";
                 }
             }
             ?>
