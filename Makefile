@@ -11,7 +11,7 @@ JSMINIFIED = $(JSSOURCES:.src.js=.min.js)
 minifyall: $(JSMINIFIED)
 
 %.min.js: %.src.js
-	uglifyjs -o $@ $< --compress --mangle
+	uglifyjs2 -o $@ $< --compress --mangle
 
 # Generate index page
 index.html: index.php $(JSMINIFIED)
