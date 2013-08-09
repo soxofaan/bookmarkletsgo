@@ -20,19 +20,19 @@
             echo "\n";
             foreach (new DirectoryIterator(__DIR__ . '/js') as $fileInfo) {
                 if ($fileInfo->isFile() && substr($fileInfo->getFilename(), -7) === '.min.js') {
-                    $path = $fileInfo->getPathname();
-                    $minified = file_get_contents($path);
+                    $minified = file_get_contents($fileInfo->getPathname());
                     $url = 'javascript:' . rawurlencode($minified);
                     $urlSize = strlen($url);
-                    $filenameBase = substr($fileInfo->getFilename(), 0, -7);
+                    $filename = $fileInfo->getFilename();
+                    $filenameBase = substr($filename, 0, -7);
                     $name = htmlentities($filenameBase);
                     $title = htmlentities(str_replace('-', ' ', $filenameBase));
 
                     echo "<li>\n";
                     echo "<a href=\"$url\" title=\"$title\" class=\"bookmarklet\">$name ($urlSize bytes)</a>\n";
                     echo "<span class=\"sources\">";
-                    echo " <a href=\"$path\">min</a>";
-                    echo " <a href=\"" . str_replace('.min.js', '.src.js', $path) . "\">src</a>";
+                    echo " <a href=\"js/$filename\">min</a>";
+                    echo " <a href=\"js/" . str_replace('.min.js', '.src.js', $filename) . "\">src</a>";
                     echo "</span>\n";
                     echo "</li>\n";
                 }
