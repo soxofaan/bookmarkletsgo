@@ -85,6 +85,12 @@
     jQuery(window).eachEventHandler(addEntry);
     jQuery('*').eachEventHandler(addEntry);
 
+    // Add a close button
+    var close = jQuery('<a href="javascript:jQuery(\'#' + container_id + '\').remove();">X</a>');
+    close.css({position:'absolute', right: 0, top: 0, padding: '1em'});
+    container.prepend(close);
+
+    // Add to page.
     jQuery('body').append(container);
 
     // Add some CSS rules of our own.
